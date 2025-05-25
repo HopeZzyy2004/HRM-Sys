@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Depends # type: ignore
 from sqlalchemy import create_engine, Column, Integer, String, Date, Boolean, ForeignKey # type: ignore
 from sqlalchemy.ext.declarative import declarative_base # type: ignore
-from sqlalchemy.orm import sessionmaker, relationship # type: ignore
+from sqlalchemy.orm import sessionmaker, relationship, Session # type: ignore
 
 # Database Configuration
 DATABASE_URL = "sqlite:///./hrms.db"
@@ -60,21 +60,21 @@ Base.metadata.create_all(bind=engine)
 
 # Routers
 @app.get("/users/")
-async def read_users(db: SessionLocal = Depends(get_db)):
+async def read_users(db: Session = Depends(get_db)):
     return db.query(User).all()
 
 @app.get("/leaves/")
-async def read_leaves(db: SessionLocal = Depends(get_db)):
+async def read_leaves(db: Session = Depends(get_db)):
     return db.query(Leave).all()
 
 @app.get("/shifts/")
-async def read_shifts(db: SessionLocal = Depends(get_db)):
+async def read_shifts(db: Session = Depends(get_db)):
     return db.query(Shift).all()
 
 @app.get("/trainings/")
-async def read_trainings(db: SessionLocal = Depends(get_db)):
+async def read_trainings(db: Session = Depends(get_db)):
     return db.query(Training).all()
 
 @app.get("/performances/")
-async def read_performances(db: SessionLocal = Depends(get_db)):
+async def read_performances(db: Session = Depends(get_db)):
     return db.query(Performance).all()
