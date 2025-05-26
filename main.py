@@ -1,7 +1,7 @@
-from fastapi import FastAPI, Depends # type: ignore
-from sqlalchemy import create_engine, Column, Integer, String, Date, Boolean, ForeignKey # type: ignore
-from sqlalchemy.ext.declarative import declarative_base # type: ignore
-from sqlalchemy.orm import sessionmaker, relationship, Session # type: ignore
+from fastapi import FastAPI, Depends
+from sqlalchemy import create_engine, Column, Integer, String, Date, Boolean, ForeignKey 
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker, relationship, Session 
 
 # Database Configuration
 DATABASE_URL = "sqlite:///./hrms.db"
